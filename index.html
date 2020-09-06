@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="library">
+      <template id="bookTemplate">
+        <div class="book">
+          <p class="bookTitle"></p>
+          <p class="bookAuthor"></p>
+          <p class="bookPages"></p>
+          <div class="bookControls">
+            <label class="switch">
+              <input type="checkbox" class="bookReadCheckbox">
+              <span class="slider round"></span>
+            </label>
+            <button class="bookRemoveButton"><i class="far fa-trash-alt"></i></button>
+          </div>
+        </div>
+      </template>
+      
+      <div id="addBookButtonContainer">
+        <button id="addBookButton"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+    
+    <div id="bookFormContainer">
+      <form id="bookForm">
+        <i id="cancel" class="fas fa-times"></i>
+        <input type="text" id="title" placeholder="Title" required>
+        <input type="text" id="author" placeholder="Author" required>
+        <input type="number" id="pages" placeholder="123 pages" required>
+        
+        <div id="formReadGroup">
+          <label class="switch">
+            <input type="checkbox" id="formReadCheckbox">
+            <span class="slider round"></span>
+          </label>
+          <label id="formReadLabel"></label>
+        </div>
+        
+        <input type="submit" id="submit" value="Add">
+       </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,260 @@
+/* Radio toggle switch: https://www.w3schools.com/howto/howto_css_switch.asp */
+
+:root {
+  --background-color: #f1f8f9;
+  --book-on-color: #ffffff;
+  --book-off-color: #cccccc;
+  --slider-on-color: #86e583;
+  --slider-off-color: #858585;
+  --form-toggle-duration: 0.15s;
+  --slider-duration: 0.4s;
+  --font-weight-title: 600;
+  --font-weight-author: 400;
+  --font-weight-pages: 300;
+  --font-size-title: 1.2em;
+  --font-size-author: 1em;
+  --font-size-pages: 0.9em;
+  --book-min-width: 200px;
+  --book-max-width: 300px;
+  --book-min-height: 150px;
+  --book-max-height: 200px;
+  --card-shadow-box: 0px 0px 5px var(--book-off-color);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--background-color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#library {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--book-min-width), var(--book-max-width)));
+  grid-template-rows: repeat(auto-fill, minmax(var(--book-min-height), var(--book-max-height)));
+  grid-auto-columns: minmax(var(--book-min-width), var(--book-max-width));
+  grid-auto-rows: minmax(var(--book-min-height), var(--book-max-height));
+  justify-items: space-evenly;
+  gap: 1em;
+  margin: 1em;
+  transition-property: filter;
+  transition-duration: var(--form-toggle-duration);
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  border: none;
+  border-radius: 0.5em;
+  padding: 0.5em 1.5em;
+  background-color: var(--book-on-color);
+  box-shadow: var(--card-shadow-box);
+  transition-property: background-color;
+  transition-duration: var(--slider-duration);
+}
+
+.book.notRead {
+  background-color: var(--book-off-color);
+}
+
+.book p {
+  margin: 0.5em 0;
+}
+
+.bookTitle {
+  font-weight: var(--font-weight-title);
+  font-size: var(--font-size-title);
+}
+
+.bookAuthor {
+  font-weight: var(--font-weight-author);
+  font-size: var(--font-size-author);
+}
+
+.bookPages {
+  font-weight: var(--font-weight-pages);
+  font-size: var(--font-size-pages);
+}
+
+.bookControls {
+  align-self: center;
+  margin-top: auto;
+}
+
+.bookRemoveButton {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 1.1em;
+  color: var(--slider-off-color);
+}
+
+.bookRemoveButton:focus {
+  outline: none;
+}
+
+#addBookButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#addBookButton {
+  align-self: center;
+  color: var(--book-off-color);
+  height: 75px;
+  width: 75px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5em;
+  outline: none;
+  background-color: var(--book-on-color);
+  box-shadow: var(--card-shadow-box);
+  cursor: pointer;
+  transition-property: transform;
+  transition-duration: var(--form-toggle-duration);
+}
+
+#addBookButton:active {
+  transform: scale(0.8);
+}
+
+#bookFormContainer {
+  visibility: hidden;
+  position: absolute;
+  margin: 0 auto;
+  top: 30vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 350px;
+  padding: 1em;
+  border: none;
+  border-radius: 0.5em;
+  background-color: var(--book-on-color);
+  transition-property: visibility, opacity;
+  transition-duration: var(--form-toggle-duration);
+  box-shadow: var(--card-shadow-box);
+}
+
+#bookForm {
+  display: flex;
+  flex-direction: column;
+  transition-property: visibility, opacity;
+  transition-duration: var(--form-toggle-duration);
+}
+
+#cancel {
+  align-self: flex-end;
+  cursor: pointer;
+  font-size: 1.3em;
+  margin: 0 0 0.5em 0;
+}
+
+#title {
+  font-weight: var(--font-weight-title);
+  font-size: var(--font-size-title);
+}
+
+#author {
+  font-weight: var(--font-weight-author);
+  font-size: var(--font-size-author);
+}
+
+#pages {
+  font-weight: var(--font-weight-pages);
+  font-size: var(--font-size-pages);
+}
+
+#submit {
+  padding: 0.5em 0;
+  font-weight: 500;
+  font-size: 1.3em;
+  color: black;
+  background-color: var(--slider-on-color);
+  cursor: pointer;
+}
+
+#bookForm input {
+  margin: 0.5em 0;
+  padding: 0.7em 0.5em;
+  border-radius: 0.2em;
+  border: none;
+  outline: none;
+  box-shadow: 2px 1px 3px grey;
+}
+
+#formReadGroup {
+  margin: 0.5em 0;
+}
+
+#formReadLabel {
+  font-weight: 500;
+  margin: 0 1em;
+}
+
+/* Radio toggle switch */
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 3em;
+  height: 1.5em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: var(--slider-duration);
+  background-color: var(--slider-off-color);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.1em;
+  width: 1.1em;
+  left: 0.2em;
+  bottom: 0.2em;
+  transition: var(--slider-duration);
+  background-color: var(--book-on-color);
+}
+
+input:checked + .slider {
+  background-color: var(--slider-on-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--slider-on-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(1.5em);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 1em;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
