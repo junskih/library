@@ -36,13 +36,14 @@ body {
 
 #library {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--book-min-width), var(--book-max-width)));
-  grid-template-rows: repeat(auto-fill, minmax(var(--book-min-height), var(--book-max-height)));
+  grid-template-columns: repeat(auto-fill, minmax(min-content, max-content));
+  grid-template-rows: repeat(auto-fill, minmax(min-content, max-content));
   grid-auto-columns: minmax(var(--book-min-width), var(--book-max-width));
   grid-auto-rows: minmax(var(--book-min-height), var(--book-max-height));
   justify-items: space-evenly;
   gap: 1em;
-  margin: 1em;
+  width: fit-content;
+  margin: 1em auto;
   transition-property: filter;
   transition-duration: var(--form-toggle-duration);
 }
@@ -56,8 +57,12 @@ body {
   padding: 0.5em 1.5em;
   background-color: var(--book-on-color);
   box-shadow: var(--card-shadow-box);
-  transition-property: background-color;
+  transition-property: background-color, transform;
   transition-duration: var(--slider-duration);
+}
+
+.book:hover {
+  transform: scale(1.05);
 }
 
 .book.notRead {
@@ -129,7 +134,7 @@ body {
   visibility: hidden;
   position: absolute;
   margin: 0 auto;
-  top: 30vh;
+  top: 40vh;
   left: 0;
   right: 0;
   margin: 0 auto;
